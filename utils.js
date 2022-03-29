@@ -66,3 +66,38 @@ function annoCoordToPZCoord(annocoord) {
   let ey = sy + Math.floor(arr[3].slice(0, arr[3].indexOf(".")) / 10)
   return { sx: sx, sy: sy, ex: ex, ey: ey }
 }
+
+function CoordinateToFileName(x, y, filetype) {
+  if (filetype == "M") {
+    return "map_" + x + "_" + y + ".bin";
+  } else if (filetype == "C") {
+    let cx = Math.floor(x / 30)
+    let cy = Math.floor(y / 30)
+    return "chunkdata_" + cx + "_" + cy + ".bin";
+  } else if (filetype == "Z") {
+    let cx = Math.floor(x / 30)
+    let cy = Math.floor(y / 30)
+    return "zpop_" + cx + "_" + cy + ".bin";
+  }
+}
+
+function toggleprogressbar(state) {
+  if (state) {
+    document.getElementById("overlay").style.display = "block";
+    //document.getElementById("wrapper").classList.remove("d-none");
+  } else {
+    document.getElementById("overlay").style.display = "none";
+    //document.getElementById("wrapper").classList.add("d-none");
+  }
+} 
+
+function updateProgressBar(FilesToCheck,filesChecked,AreasToClear,areasCleared){
+  CurrentProgress = Math.floor(filesChecked/FilesToCheck*100)
+  MainProgress = Math.floor(areasCleared/AreasToClear*100)
+  MainProgressbar = document.getElementById("OverallprogressBar")
+  CurrentprogressBar =   document.getElementById("CurrentprogressBar")
+  MainProgressbar.innerText = "Areas cleared " + areasCleared + "/" + AreasToClear;
+  CurrentprogressBar.innerText = "Current Area " + CurrentProgress + "%";
+  CurrentprogressBar.style.width = CurrentProgress + "%";
+  MainProgressbar.style.width = MainProgress+ "%";
+}
