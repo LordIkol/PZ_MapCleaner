@@ -1,0 +1,27 @@
+[
+  { 
+    "@context": "http://www.w3.org/ns/anno.jsonld",
+    "id": "#unique-ID-Here",
+    "type": "Annotation",
+    "body": [{
+      "type": "TextualBody",
+      "value": "MEEP"
+    }, {
+      "type": "TextualBody",
+      "purpose": "tagging",
+      "value": "Tag 1"
+    }, {
+      "type": "TextualBody",
+      "purpose": "tagging",
+      "value": "Tag 2"
+    }],
+    "target": {
+      "selector": [{
+        "type": "FragmentSelector",
+        "conformsTo": "http://www.w3.org/TR/media-frags/",
+        "value": "xywh=pixel:12000,2210,10,10"
+      }]
+    }
+  }
+]
+
